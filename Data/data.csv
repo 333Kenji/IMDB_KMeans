@@ -1,4 +1,4 @@
-tconst,primaryTitle,startYear,runtimeMinutes,genres,ordering,nconst,category,primaryName,primaryProfession,knownForTitles,averageRating,numVotes,directors,writers
+tconst,primarytitle,startyear,runtimeminutes,genres,ordering,nconst,category,primaryname,primaryprofession,knownfortitles,averagerating,numvotes,directors,writers
 tt0003419,The Student of Prague,1913.0,85,"Drama,Fantasy,Horror",10,nm0226278,production_designer,Robert A. Dietrich,"art_director,production_designer,director","tt0133949,tt0006820,tt0444711,tt0489555",6.4,2071.0,"nm0753233,nm0917467","nm0263912,nm0210503"
 tt0003419,The Student of Prague,1913.0,85,"Drama,Fantasy,Horror",1,nm0917467,actor,Paul Wegener,"actor,director,writer","tt0003419,tt0004026,tt0008431,tt0176776",6.4,2071.0,"nm0753233,nm0917467","nm0263912,nm0210503"
 tt0003419,The Student of Prague,1913.0,85,"Drama,Fantasy,Horror",2,nm0074186,actress,Grete Berger,actress,"tt0013086,tt0012494,tt0003419,tt0003390",6.4,2071.0,"nm0753233,nm0917467","nm0263912,nm0210503"
