@@ -88,8 +88,17 @@ ipython_config.py
 # .python-version
 
 #---
+
+.csv 
 basics.tsv
 crew.tsv
 name.tsv
 principals.tsv
 ratings.tsv
+
+basics.csv
+name.csv
+principals.csv
+ratings.csv
+
+
