@@ -48,10 +48,8 @@ The notebook(s) for this project can be found here.
 ## Motivations
 
 Project introduction.
-I'm doing this project to build intuition in clustering using the KMeans algorithm.
-The project goal is to succesfully develop clusters of movies while also producing their profiles, i.e. the typical values associated with each.
-The major challenges presented by ths project are first, paring down the hefty IMDB databse files into a dataframe of relevant features, then transforming the features so their scale and centering permits an accepable estimation grouping prior to modeling.
-The Solution
+
+I'm doing this project to build intuition in clustering using the KMeans algorithm. The project goal is to successfully develop clusters of movies while also producing their profiles, i.e. the typical values associated with each. The major challenges presented by this project are first, paring down the hefty IMDB data files into a data frame of relevant features, then transforming the features so their scale and centering permit an acceptable estimation grouping before modeling.
 - By transforming the data and selecting the optimal number of centroids I'm able to develop a KMeans model.
 - Evaluation Metrics.
     - model accruacy and the elbbow method.
