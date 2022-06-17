@@ -80,33 +80,23 @@ The Solution
 1. Data
 - Using Pandas I reduced five large (one is 2GB+) .tsv files downloaded from IMDB by loading in only select features and values that're relevant to this project.
 - These tables are then concatenated, using Pandas, into a main dataframe that I save locally and reload in order to preserve system stability.
-2. Initial EDA
-- 
-    2.1 Data Diagnosis
-    
-    2.2 Categorical Features
-    
-    2.3 Numeric Features
-    
-    2.4 Feature Associations
-    
+
+2. EDA
+- Features are analyzed and trimmed using Pandas and Seaborn (for visualization).
+- I primarily employ countplots, histogrames, and kde plots to visually examine each feature.
+- In some cases, with numeric features, I use the interquartile range to trim off outliers.
+
 3. Feature Selection & Hyperparameter Tuning
-    
-    3.1 Feature Selection
-    
-    3.2 Feature Encoding
-    
-    3.3 Optimal K: Elbow Method
-    
-    3.4 PCA
-    
-    3.4.1 Finding Optimal N-Components Using Optimal K
-    
-    3.4.2 Rechecking Optimal K Using Optimal N-Components
-    
+- In order to presefve information without increasing dimesnaionality I use an ordinal encoder on the categorical features I'd like to keep for modelling.
+- I use a column transformer from SKlearn to prepare the taining data that'll be used for finding the optimal number of clusters (k) and clusters (PCA).
+- All numeric features, including the new ordinal features derived from himly dimensional categoricals, are passed through a standard scalar.
+- One hot encoding is used for 'category' and 'genre' which both have only a handlful of features.
+- Using Matplotlib, Pandas, and SKlearn I employ the elbnow method to judge the best number of clusers.
+- Using on SKlearns' PCA implementation I check for the optimal number of features to abstract the base feature space into.
+
 4. Training KMeans ++ with PCA
-5. KMeans++ Model and PCA Evaluation
-6. Cluster Analysis
+- Using the table of PCA and the Elbow method I change/affirm the number of clusters required and train the final KMeans++ model.
+
 
 
 
