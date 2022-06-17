@@ -77,10 +77,42 @@ The Solution
 ---
 ## Project Description
 ### Technical Aspect
+1. Data
+- Using Pandas I reduced five large (one is 2GB+) .tsv files downloaded from IMDB by loading in only select features and values that're relevant to this project.
+- These tables are then concatenated, using Pandas, into a main dataframe that I save locally and reload in order to preserve system stability.
+2. Initial EDA
+- 
+    2.1 Data Diagnosis
+    
+    2.2 Categorical Features
+    
+    2.3 Numeric Features
+    
+    2.4 Feature Associations
+    
+3. Feature Selection & Hyperparameter Tuning
+    
+    3.1 Feature Selection
+    
+    3.2 Feature Encoding
+    
+    3.3 Optimal K: Elbow Method
+    
+    3.4 PCA
+    
+    3.4.1 Finding Optimal N-Components Using Optimal K
+    
+    3.4.2 Rechecking Optimal K Using Optimal N-Components
+    
+4. Training KMeans ++ with PCA
+5. KMeans++ Model and PCA Evaluation
+6. Cluster Analysis
+
+
+
 This project relies heavily on visual analysis
 1. Loading Data
-    - The data comes from IMDB in a series of .tar files that I must decompress and extract several tables from.
-    - These tables are then filtered and finally joined together as the project's dataset.
+
 2. EDA
     - Through an EDA of descriptive statistics I discovered, and removed outliers using the IQR method of removing data outside 1.5 times the upper and lower IQR boundaries..
 3. Preprocessing
