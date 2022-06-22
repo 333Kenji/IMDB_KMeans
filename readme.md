@@ -81,7 +81,7 @@ primaryname =   crew/castmember name
 
 ### 3. Feature Selection & Hyperparameter Tuning
 After checking a range of cluster quantities I use principal component analysis to reduce the dimensionality of the data. To deal with the categorical variables I'm going to encode them ordinally so can feed the information to the KNN++ model without having to dramatically increase the feature space.
-![alt text](https://github.com/333Kenji/KMeans_Numbers/blob/main/Images/3.3_hypertuning_kmeans_elbow_1.jpg "Elbow Method")
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.3_hypertuning_kmeans_elbow_1.jpg "Elbow Method")
 
 #### 3.1 Feature Selection
 
