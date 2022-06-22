@@ -68,8 +68,9 @@ numvotes    =   number of IMDB votes
 primaryname =   crew/castmember name
 
 ### 1.1 Loading & Wrangling
-- Using Pandas I reduced five large (one is 2GB+) .tsv files downloaded from IMDB by loading in only select features and values that are relevant to this project.
+- Using Pandas I reduced the five large (one is 2GB+) .tsv files downloaded from IMDB by loading in only select features and values that are relevant to this project.
 - These tables are then concatenated, using Pandas, into the main data frame that I save locally and reload to preserve system stability.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/1.3_loaded_data.jpg "Elbow Method")
 
 
 
@@ -78,6 +79,9 @@ primaryname =   crew/castmember name
 - I primarily employ countplots, histograms, and KDE plots to visually examine each feature.
 - In some cases, with numeric features, I use the interquartile range to trim off outliers.
  - Using descriptive statistics I discovered and removed outliers using the IQR method of identifying data outside 1.5 times the upper and lower IQR boundaries as statistical outliers.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/2.3.b_outliers_check_averagerating.jpg "outliers")
+
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/2.3.b_outliers_recheck_averagerating.jpg "outlier_recheck")
 
 ### 3. Feature Selection & Hyperparameter Tuning
 After checking a range of cluster quantities I use principal component analysis to reduce the dimensionality of the data. To deal with the categorical variables I'm going to encode them ordinally so can feed the information to the KNN++ model without having to dramatically increase the feature space.
@@ -89,32 +93,50 @@ A key concept with PCA is that the first features considered matter the most - I
 primaryname explodes when one hot encoded, primarytitle follows. Since I reduced genres down to a list of quintessential genres (i.e. not a list of genres. "Drama" vs "['Drama', 'Horror']").
 
 - To preserve information without increasing dimensionality I use an ordinal encoder on the categorical features I'd like to keep for modeling.
-- I use a column transformer from SKlearn to prepare the training data that'll be used for finding the optimal number of clusters (k) and clusters (PCA).
-- All numeric features, including the new ordinal features derived from hugely dimensional categoricals, are passed through a standard scalar.
-- One hot encoding is used for 'category' and 'genre' which both have only a handful of features.
-- Using Matplotlib, Pandas, and SKlearn I employ the elbow method to judge the best number of clusters.
-- Using on SKlearns' PCA implementation I check for the optimal number of features to abstract the base feature space into.
+
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.1_X.jpg "X")
 
 
 ### 3.2 Feature Encoding
 I'm using a column transformer to encode the X, which is the same as data but with a selection of categorical features ordinally encoded. It will return x_train which I'll then use for finding the optimal number of centroids (k) and components (PCA).
 
 
+- I use a column transformer from SKlearn to prepare the training data that'll be used for finding the optimal number of clusters (k) and clusters (PCA).
+- All numeric features, including the new ordinal features derived from hugely dimensional categoricals, are passed through a standard scalar.
+- One hot encoding is used for 'category' and 'genre' which both have only a handful of features.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.2_X_train.jpg "X_train")
+
+
 ### 3.3 Optimal K: Elbow Method
 
+- Using Matplotlib, Pandas, and SKlearn I employ the elbow method to judge the best number of clusters.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.3_hypertuning_kmeans_elbow_1.jpg "elbow_method")
+
 ### 3.4 Principal Component Analysis
+- Using on SKlearns' PCA implementation I check for the optimal number of features to abstract the base feature space into. Using the first two features, which bear the greatest gain in information, I build a KMeans++ model using the optimal number of centroids.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.4_hypertuning_PCA_2_comp.jpg "KMeans with PCA test")
+
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.4_X_r_2_comp.jpg "Two Components")
 
 ### 3.4.1 Finding Optimal N-Components Using Optimal K
 To find the optimal number of components to abstract the feature set into I need to analyze the entire table to find both the total variance and its 95% percentile. The number of components that can reduce variance by 5% is what we'll go with.
 
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.4.1_X_r_all_comp.jpg "All Components")
+
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.4.1_hypertuning_PCA_explanatory_components.jpg "Finding Best Eigenvectors")
+
 #### 3.4.2 Rechecking For Optimal K-Means Using Optimal N-Components
 Using PCA with this optimal number of components to add a preprocessing layer to the data before applying KMeans.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.4.2_X_r_best_comp.jpg "Finding Best Components")
 
 ### 4. Training KMeans ++ with PCA
 - Using the table of PCA and the Elbow method I change/affirm the number of clusters required and train the final KMeans++ model.
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/3.4.2_hypertuning_kmeans_elbow_2.jpg "best k now")
+
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/4_data_with_KMeans_pred_col "Final Table")
 
 ### 5. KMeans++ Model and PCA Evaluation
-
+![alt text](https://github.com/333Kenji/IMDB_KMeans/blob/main/Images/5_final_clusters.jpg "Finding Best Components")
 
 ### 6. Cluster Analysis
 
